@@ -1,10 +1,10 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "styled-components"
 import Collapse from '../components/Collapse';
 import Locations from "../assets/data/data.json"
-import { renderMatches } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-console.log(Locations.id);
+console.log(Locations);
 
 const ContainerFicheLoc = Style.div`
     
@@ -13,7 +13,9 @@ const ContainerFicheLoc = Style.div`
 //     margin: 20px 0 20px;
 //     border-radius: 5px
 //     `
-const Title = Style.div`
+const TitleHostRating = Style.div`
+    display: flex;
+    flex-direction: column;
     margin: 0 70px
     `
 const TagCollapse = Style.div`
@@ -50,42 +52,62 @@ const TextLabel = Style.p`
     padding: 20px
     `
 function FicheLoc() {
-    // console.log(Locations);
+    
+    const {id} = useParams();
+    const [ficheData, setFicheData] = useState({});
+    // console.log(ficheData);
 
-    Locations.map((loc, id, title, location) => {
-       
-        if(loc.id === title) {
+    useEffect(() => {
+        let data = Locations.find((item) => item.id = id)
+        console.log(data);
+        setFicheData(data)
+    }, [id])
+
+    const { 
+        title, cover, pictures, description, host, rating, location, equipements, tags, index }
+         = ficheData
 
         return (
             <ContainerFicheLoc>
-                <Title key={id} value={loc.id}>
-                    <h1>{title}</h1>
-                    <p>{location}</p>
-                </Title>
-  
-                <TagCollapse>
-                    <Tag>
-                        <RectTag>Tag1</RectTag>
-                        <RectTag>Tag2</RectTag>
-                        <RectTag>Tag3</RectTag>
-                    </Tag>
-                    <Content>
-                        <ContentCollapse>
-                            <Collapse label="Decription">
-                                <TextLabel>Description</TextLabel>
-                            </Collapse>
-                        </ContentCollapse>
-                        <ContentCollapse>
-                            <Collapse label="Equipements">
-                                <TextLabel></TextLabel>
-                            </Collapse>
-                        </ContentCollapse>
-                    </Content>
-                </TagCollapse>
+               
+            
+                    <><TitleHostRating>
+                        <div>
+                            <h1 key={id}>{title}</h1>
+                            <p></p>
+                        </div>
+                        <div>
+                            <p>{location}</p>
+                        </div>
+                        
+                    </TitleHostRating>
+                    <TagCollapse>
+                            <Tag>
+                                <RectTag>{tags}</RectTag>
+                                <RectTag>{tags}</RectTag>
+                                <RectTag>{tags}</RectTag>
+                            </Tag>
+                            <Content>
+                                <ContentCollapse>
+                                    <Collapse label="Decription">
+                                        <TextLabel key={id}>{description}</TextLabel>
+                                    </Collapse>
+                                </ContentCollapse>
+                                <ContentCollapse>
+                                    <Collapse label="Equipements">
+                                        <TextLabel key={id}>{equipements}</TextLabel>
+                                    </Collapse>
+                                </ContentCollapse>
+                            </Content>
+                        </TagCollapse></>
+                
+                
             </ContainerFicheLoc>
         
     );
-    } 
-    })}
+    // } else {
+
+    }
+// })}
 
 export default FicheLoc;

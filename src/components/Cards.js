@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from "styled-components"
+import { Link } from 'react-router-dom';
 
 const CardRectangle = Style.div`
     display: flex;
@@ -23,15 +24,18 @@ const CardText = Style.p`
     text-decoration: none;
     `
 function Cards({locations}) {
-    console.log(locations.id);
+    // console.log(locations.id);
       const cardId = locations.id;
+    //   console.log(cardId);
 
       return (
+        <Link key={cardId} to={`ficheloc/${cardId}`} >
             <CardRectangle>
                 <CardImage>
-                    <CardText key={cardId}>{locations.title}</CardText>
+                    <CardText>{locations.title}</CardText>
                 </CardImage>
             </CardRectangle>
+            </Link>
         );
 
 };

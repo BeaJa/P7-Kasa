@@ -2,7 +2,6 @@ import React from 'react';
 import Style from "styled-components";
 import Photo1 from "../assets/foret.png"
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
 import DatasCards from '../components/DatasCards';
 
 
@@ -34,6 +33,7 @@ const ContainerCards = Style.div`
     padding: 20px
     `
 const Home = () => {
+
  
     return (
         <ContainerHome>
@@ -42,9 +42,9 @@ const Home = () => {
                     <Text>Chez vous, partout et ailleurs</Text>
             </ContainerImageText>
             <ContainerCards>
-                <Link  to="FicheLoc" alt="Info Logement">
+                
                   <DatasCards></DatasCards>
-                    </Link>
+                
             </ContainerCards>
             <Footer></Footer>
         </ContainerHome>

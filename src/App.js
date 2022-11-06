@@ -16,7 +16,7 @@ const App = () => {
       <Route path='/' element={<Home/>}></Route>
       <Route path='/apropos' element={<Apropos/>}>
       </Route>
-      <Route path="/ficheloc" element={<Ficheloc/>}/>
+      <Route path="/ficheloc/:id" element={<Ficheloc/>}/>
       <Route path='*' element={<Error404/>}></Route>
     </Routes>
     </BrowserRouter>

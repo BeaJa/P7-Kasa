@@ -3,7 +3,7 @@ import Locations from "../assets/data/data.json"
 import Cards from './Cards';
 import Style from "styled-components"
 
-console.log(Locations[0].id);
+// console.log(Locations[0].id);
 
 const ContainerCards = Style.div`
     display: grid;
