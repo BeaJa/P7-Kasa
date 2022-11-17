@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Apropos from './pages/Apropos';
 import Error404 from './pages/Error404';
-import Ficheloc from './pages/Ficheloc';
-import Home from './pages/Home';
+import FicheLoc from './pages/Ficheloc';
 import { GlobalStyle } from './styles/style';
+import datas from './assets/data/data.json'
+import Home from './pages/Home';
 
 const App = () => {
   return (
@@ -13,11 +14,11 @@ const App = () => {
     <GlobalStyle></GlobalStyle>
     <Header></Header>
     <Routes>
-      <Route path='/' element={<Home/>}></Route>
-      <Route path='/apropos' element={<Apropos/>}>
+      <Route path='/' element={<Home/>} ></Route>
+      <Route path='/apropos' element={<Apropos />}></Route>
+      <Route path='/ficheloc/:id' data={datas} element={<FicheLoc />}> 
       </Route>
-      <Route path="/ficheloc/:id" element={<Ficheloc/>}/>
-      <Route path='*' element={<Error404/>}></Route>
+      <Route path='*' element={<Error404 />}></Route>
     </Routes>
     </BrowserRouter>
   );

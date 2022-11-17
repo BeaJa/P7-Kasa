@@ -2,14 +2,15 @@ import React from 'react';
 import Style from "styled-components"
 import Logo from '../assets/logo.png'
 import { StyleLink } from '../styles/style';
+import { device } from './device';
 
 const ContainerHeader = Style.div`
     display: flex;
     justify-content: space-between;
-    margin-left: 50px
+    margin-right: 40px
     `
 const HeaderLogo = Style.div`
-    padding: 20px 0 0;
+    padding: 20px 0 0 50px;
     `
 const HeaderImage = Style.img`
     width: 100%
@@ -18,8 +19,12 @@ const ContainerNav = Style.nav`
     display: flex;
     text-decaration: none;
     height: 88px;
-    align-items: flex-end
-    `
+    align-items: flex-end;
+
+    @media ${device.tablet} {
+    font-size: 17px;
+    }
+    `;
 const Header = () => {
     return (
         <ContainerHeader>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import Style from "styled-components"
 import { createGlobalStyle } from "styled-components"
+import { device } from "../components/device"
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,7 +11,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
+    max-width: 1940px;
     margin: 0;
+    margin: auto;
   }
 
   li {
@@ -21,8 +24,14 @@ export const StyleLink = Style(Link)`
     display: flex;
     color: #FF6060;
     text-decoration: none;
-    width: 150px;
-    padding: 20px;
+    width: 100px;
+    padding: 20px 10px;
+    justify-content: flex-end;
+
+    @media ${device.tablet} {
+      font-size: 17px;
+      text-transform: uppercase;
+    }
     &:hover {
       text-decoration: underline
     }
