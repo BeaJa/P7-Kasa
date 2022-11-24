@@ -1,44 +1,59 @@
 import React from 'react';
 import Style from "styled-components"
-import Photo2 from "../assets/montagne.png"
+import Photo from '../assets/montagne.png';
 import Collapse from '../components/Collapse';
 import { device } from '../components/device';
 import Footer from '../components/Footer';
+import Photo1 from '../assets/montagne2.png'
 
 const ContainerApropos = Style.div`
-    min-height: 100%;
-    `
-const Background = Style.div`
-    position: relative;
-    margin: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: 0 100px;
 
-    @media ${device.tablet} {
-    
+    @media ${device.mobileM} {
+        margin: 10px 0;
+    }
+    `
+const Container = Style.div`
+    display: flex;
+    position: relative;
+    height: 223px;
+    margin: 20px 0;
+
+    @media ${device.mobileM} {
+        margin: 0 20px 20px;
     }
     `
 const Image = Style.img`
     width: 100%;
+    height: 223px;
     border-radius: 20px;
+    background-size: contain;
 
-    @media ${device.tablet} {
-    
+    @media ${device.mobileM} {
+      content: url(${Photo1})
     }
     `
 const ContainerCollapse = Style.div`
-    height : 850px;
-    margin: 30px 80px;
+    margin: 10px 80px;
 
-    @media ${device.tablet} {
-        height: auto;
+    @media ${device.mobileM} {
+        margin: 0 20px;
     }
     `
 const LabelText = Style.p`
     font-size: 24px;
-    line-height: 142.6%;
-    color: #FF6060;
+    line-height: 30px;
     font-weight: 400;
     margin: 0;
-    padding: 20px
+    padding: 20px;
+
+    @media ${device.mobileM} {
+        font-size: 12px;
+        line-height: 20px;
+    }
     `
 
 const Apropos = () => {
@@ -65,11 +80,11 @@ const Apropos = () => {
         }
     ]
     return (
-
+        <>
         <ContainerApropos>
-            <Background>
-                <Image src={Photo2} alt="Montagne"></Image>
-            </Background>
+            <Container>
+                <Image src={Photo} alt="montagne" ></Image>
+            </Container>
             <ContainerCollapse>
                 {
                     tableau.map((item, id) => 
@@ -78,9 +93,9 @@ const Apropos = () => {
                 </Collapse>)
                 }
             </ContainerCollapse>
-            <Footer />
         </ContainerApropos>
+        <Footer></Footer>
+        </>
     );
 };
-
 export default Apropos;

@@ -8,10 +8,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 24px;
+    color: #FF6060;
   }
   
   body {
-    max-width: 1940px;
+    max-width: 1440px;
     margin: 0;
     margin: auto;
   }
@@ -22,17 +23,16 @@ export const GlobalStyle = createGlobalStyle`
  `
 export const StyleLink = Style(Link)`
     display: flex;
-    color: #FF6060;
     text-decoration: none;
     width: 100px;
     padding: 20px 10px;
     justify-content: flex-end;
-
-    @media ${device.tablet} {
-      font-size: 17px;
-      text-transform: uppercase;
-    }
     &:hover {
-      text-decoration: underline
+      text-decoration: underline;
+    }
+    @media ${device.mobileM} {
+      font-size: 12px;
+      padding: 20px 5px;
+      text-transform: uppercase;
     }
     `

@@ -4,59 +4,50 @@ import Datas from '../assets/data/data.json'
 import { useParams } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import Rating from "../components/Rating";
+import Tags from "../components/Tags";
 import { device } from "../components/device";
 
 const ContainerFicheLoc = Style.div`
     min-height: 1440px;
+    margin: 20px 100px;
+
+    @media ${device.mobileM} {
+        margin: 20px;
+    }
     `
 const CarouselContentWrapper = Style.div`
     overflow: hidden;
-    margin: 20px 50px;
     `
 const TitleTagsHostRating = Style.div`
     display: flex;
-    margin: 20px 50px;
     justify-content: space-between;
 
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
         flex-direction: column;
     }
     `
 const TitleTags = Style.div`
     display: flex;
-    color: #FF6060;
     flex-direction: column;
     `
 const Title = Style.div`    
     `
 const TitleH1 = Style.h1`
+    width: auto;
+    height: 40px;
     font-size: 36px;
 
-    @media ${device.tablet} {
-        font-size: 24px;
+    @media ${device.mobileM} {
+        height: auto;
+        font-size: 20px;
         }
     `
 const TitleP = Style.p`
-    @media ${device.tablet} {
     font-size: 20px;
-    }
-    `
-const Tags = Style.div`
-    display: flex;
-    `
-const Tag = Style.div`
-    height: 35px;
-    width: auto;
-    border-radius: 15px;
-    background: #FF6060;
-    margin-right: 20px;
-    padding: 0 20px;
-    font-size: 20px;
-    line-height: 32px;
-    color: white;
 
-    @media ${device.tablet} {
-        font-size: 17px;
+    @media ${device.mobileM} {
+    font-size: 14px;
+    margin-top: 0;
     }
     `
 const HostRating = Style.div`
@@ -64,28 +55,33 @@ const HostRating = Style.div`
     flex-direction: column;
     justify-content: space-between;
 
-    @media ${device.tablet} {
-        margin-top: 50px;
+    @media ${device.mobileM} {
+        margin-top: 20px;
         flex-direction: row-reverse;
-        justify-content: space-between;
     }
     `
 const Host = Style.div`
     display: flex;
-    margin-top: 15px;
+    justify-content: flex-end;
+    text-align: end;
+    margin: 20px 0;
 
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
+        justify-content: center;
         margin: 0;
     }
     `
 const HostH2 = Style.h2`
-    color: #FF6060;
+    width: 80px;
+    height: 50px;
+    font-size: 18px;
+    text-align: right;
 
-    @media ${device.tablet} {
-        margin: 0 15px;
-        padding-top; 10px;
+    @media ${device.mobileM} {
+        width: 45px;
+        height: 35px;
+        margin: 0 10px;
         font-size: 15px;
-        text-align: right;
     }
     `
 const HostCircle = Style.div`
@@ -93,30 +89,33 @@ const HostCircle = Style.div`
     height: 64px;
     background: #C4C4C4;
     border-radius: 50px;
-    margin: 0 20px;
     overflow: hidden;
+    margin-left: 15px;
     
-    @media ${device.tablet} {
-        width: 50px;
-        height: 50px;
-        border-radius: 60px;
-        margin: 0;
+    @media ${device.mobileM} {
+        width: 32px;
+        height: 32px;
     }
     `
 const HostImage = Style.img`
     width: 64px;
     height: 64px;
+
+    @media ${device.mobileM} {
+        width: 32px;
+        height: 32px;
+    }
     `
 const ContentCollapse = Style.div`
     display: flex;
     justify-content: space-between;
     height: auto;
-    margin: 30px 50px;
+    margin: 30px 0;
 
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
         flex-direction: column;
-        margin: 15px 50px;
-        height: 120px;
+        height: 90px;
+        margin: 10px 0;
     }
     `
 const Div = Style.div`
@@ -125,38 +124,31 @@ const Div = Style.div`
 const TextLabel = Style.div`
     font-size: 24px;
     line-height: 142.6%;
-    color: #FF6060;
     font-weight: 400;
     margin-bottom: 30px;
-    padding: 20px
+    padding: 20px;
+
+    @media ${device.mobileM} {
+        font-size: 15px;
+    }
     ` 
 const List = Style.ul`
     margin: 0;
-    padding: 10px
+    padding-left: 5px;
     `
+const Li = Style.li`
+    @media ${device.mobileM} {
+        font-size: 15px;
+}
+`
 
 function FicheLoc() {
-
     const {id} = useParams();
-    // console.log(id);
-
     const fiches = Datas;
-    // console.log(fiches);
-
     const fiche = fiches.find(obj => {
         return obj.id === id;
     })
-    // console.log(fiche);
-
     const equip = fiche.equipments
-    // console.log(equip);
-    
-    const listTags = fiche.tags
-    // console.log(listTags);
-
-    // const stars = fiche.rating
-    // console.log(stars);
-
         return (
             <ContainerFicheLoc>
                 <CarouselContentWrapper>  
@@ -168,13 +160,7 @@ function FicheLoc() {
                         <TitleH1>{fiche.title}</TitleH1>
                             <TitleP>{fiche.location}</TitleP>
                     </Title>
-                    <Tags >
-                        {
-                            listTags.map((t, index) => (
-                        <Tag key={index}>{t}</Tag>
-                            ))
-                        }
-                    </Tags>
+                    <Tags data={fiche}></Tags>
                 </TitleTags>
                 <HostRating>
                     <Host>
@@ -183,8 +169,7 @@ function FicheLoc() {
                             <HostImage src={fiche.host.picture} alt='Propriétaire'/>
                         </HostCircle>
                     </Host>
-                    <Rating data={fiche}>
-                    </Rating>
+                    <Rating data={fiche}></Rating>
                 </HostRating>
                 </TitleTagsHostRating>
                     <ContentCollapse>
@@ -197,7 +182,7 @@ function FicheLoc() {
                                 <List>
                                 {
                                 equip.map((e, index) => (
-                                        <li key={index}>{e}</li>
+                                        <Li key={index}>{e}</Li>
                                     ))
                                 }
                                 </List>
@@ -205,6 +190,5 @@ function FicheLoc() {
                         </Collapse>               
                     </ContentCollapse>
             </ContainerFicheLoc>
-        )
-    }
+        )}
 export default FicheLoc;

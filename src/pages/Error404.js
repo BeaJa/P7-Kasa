@@ -17,10 +17,9 @@ const Content = Style.h1`
     align-items: center;
     font-weight: 700;
     font-size: 288px;
-    color: #FF6060;
     margin: 0;
 
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
         font-size: 120px;
     }
     `
@@ -28,9 +27,8 @@ const ErrorText = Style.p`
     font-weight: 500;
     font-size: 36px;
     align-items: flex-end;
-    color: #FF6060;
 
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
         text-align: center;
         font-size: 20px;
     }
@@ -39,13 +37,12 @@ const ErrorLink = Style(Link)`
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    color: #FF6060;
     margin-top: 90px;
     text-decoration: none;
     &:hover {
     text-decoration: underline;
     }
-    @media ${device.tablet} {
+    @media ${device.mobileM} {
         font-size: 16px;
     }
     `

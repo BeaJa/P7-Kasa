@@ -7,24 +7,37 @@ import { device } from './device';
 const ContainerHeader = Style.div`
     display: flex;
     justify-content: space-between;
-    margin-right: 40px
+    margin: 0 100px;
+
+    @media ${device.mobileM} {
+        height: 70px;
+        margin: 0 20px;
+    }
     `
 const HeaderLogo = Style.div`
-    padding: 20px 0 0 50px;
+    padding: 20px 0;
     `
 const HeaderImage = Style.img`
-    width: 100%
+    width: 210px;
+    height: 68px;
+
+    @media ${device.mobileM} {
+        width: 150px;
+        height: 47px;
+    }
     `
 const ContainerNav = Style.nav`
     display: flex;
     text-decaration: none;
     height: 88px;
-    align-items: flex-end;
+    align-items: center;
+    margin-top: 10px;
 
-    @media ${device.tablet} {
-    font-size: 17px;
+    @media ${device.mobileM} {
+        width: 145px;
+        height: 70px;
     }
-    `;
+    `
 const Header = () => {
     return (
         <ContainerHeader>

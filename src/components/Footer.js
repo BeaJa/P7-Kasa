@@ -7,7 +7,7 @@ const ContainerFooter = Style.div`
     padding: 20px 0 20px;
     height: 150px;
     background: #000000;
-    margin: 25px 0 0;
+    margin: 150px 0 0;
     bottom: 0;
     `
 const FooterBlockImage = Style.div`
