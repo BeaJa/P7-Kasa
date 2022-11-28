@@ -3,25 +3,23 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Apropos from './pages/Apropos';
 import Error404 from './pages/Error404';
-import FicheLogement from './pages/FicheLogement'
+import Logement from './pages/Logements'
 import { GlobalStyle } from './styles/style';
-import datas from './assets/data/data.json'
 import Home from './pages/Home';
-import ErrorBoundary from './components/ErrorBoundary';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <ErrorBoundary>
         <GlobalStyle />
-        <Header />
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/apropos' element={<Apropos />} />
-            <Route path='/fichelogement/:id' data={datas} element={<FicheLogement />} />
-            <Route path='*' element={<Error404 />} />
-          </Routes>
-      </ErrorBoundary>
+          <Header />
+            <Routes>
+              <Route path='/home' element={<Home/>} />
+              <Route path='/apropos' element={<Apropos />} />
+              <Route path='/logement/:id' element={<Logement />} />
+              <Route path='*' element={<Error404 />} />
+            </Routes>
+          <Footer />
     </BrowserRouter>
   );
 };

@@ -1,24 +1,21 @@
 import React from 'react';
-import Style from "styled-components"
-import Photo from '../assets/montagne.png';
+import style from "styled-components"
+import PhotoCouverture1 from '../assets/montagne.png';
 import Collapse from '../components/Collapse';
 import { device } from '../components/device';
-import Footer from '../components/Footer';
-import Photo1 from '../assets/montagne2.png'
+import PhotoCouverture2 from '../assets/montagne2.png'
 
-const ContainerApropos = Style.div`
+const ContainerApropos = style.div`
     display: flex;
     flex-direction: column;
-    height: auto;
     margin: 0 100px;
 
     @media ${device.mobileM} {
         margin: 10px 0;
     }
     `
-const Container = Style.div`
+const ContainerImage = style.div`
     display: flex;
-    position: relative;
     height: 223px;
     margin: 20px 0;
 
@@ -26,24 +23,23 @@ const Container = Style.div`
         margin: 0 20px 20px;
     }
     `
-const Image = Style.img`
+const Image = style.img`
     width: 100%;
     height: 223px;
     border-radius: 20px;
-    background-size: contain;
 
     @media ${device.mobileM} {
-      content: url(${Photo1})
+      content: url(${PhotoCouverture2})
     }
     `
-const ContainerCollapse = Style.div`
+const ContainerCollapse = style.div`
     margin: 10px 80px;
 
     @media ${device.mobileM} {
         margin: 0 20px;
     }
     `
-const LabelText = Style.p`
+const DescriptionText = style.p`
     font-size: 24px;
     line-height: 30px;
     font-weight: 400;
@@ -57,7 +53,7 @@ const LabelText = Style.p`
     `
 
 const Apropos = () => {
-    const tableau = [
+    const dataCollapse = [
         {
             id: "1",
             label: "Fiabilité",
@@ -80,22 +76,19 @@ const Apropos = () => {
         }
     ]
     return (
-        <>
         <ContainerApropos>
-            <Container>
-                <Image src={Photo} alt="montagne" ></Image>
-            </Container>
+            <ContainerImage>
+                <Image src={PhotoCouverture1} alt="montagne" ></Image>
+            </ContainerImage>
             <ContainerCollapse>
                 {
-                    tableau.map((item, id) => 
-                <Collapse key={id} label={item.label}>
-                    <LabelText>{item.description}</LabelText>
-                </Collapse>)
+                dataCollapse.map((item, id) => 
+                    <Collapse key={id} label={item.label}>
+                        <DescriptionText>{item.description}</DescriptionText>
+                    </Collapse>)
                 }
             </ContainerCollapse>
         </ContainerApropos>
-        <Footer></Footer>
-        </>
     );
 };
 export default Apropos;

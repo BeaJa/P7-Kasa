@@ -1,13 +1,13 @@
 import React from 'react';
-import Style from 'styled-components'
+import styled from 'styled-components'
 import {device} from '../components/device'
-import StarColor from '../assets/StarColor.svg'
-import StarNoColor from '../assets/StarNoColor.svg'
+import StarColor from '../assets/StarOrange.svg'
+import StarNoColor from '../assets/StarGrey.svg'
 
-const ContainerRating = Style.div`
+const ContainerRating = styled.div`
     width: 100%;
     `
-const RatingStar = Style.div`
+const RatingStar = styled.div`
     display:flex;
     height: 36px;
     justify-content: flex-end;
@@ -21,21 +21,19 @@ const RatingStar = Style.div`
 const Rating = ({data}) => {
 
     const star = Array(5).fill(0);
-    // console.log(star);
 
     const activeStars = data.rating;
-    // console.log(activeStars);
 
     return (
         <ContainerRating>
             <RatingStar>
             {
-                star.map((_, index) => {
-                     if(index < activeStars) {
-                        return <img src={StarColor} key={index} alt='etoile orange' />
-                    } 
-                       return <img src={StarNoColor} key={index} alt='etoile grise' />
-                    })
+            star.map((_, index) => {
+                if(index < activeStars) {
+                    return <img src={StarColor} key={index} alt='etoile orange' />
+                } 
+                    return <img src={StarNoColor} key={index} alt='etoile grise' />
+                })
             }
             </RatingStar>
         </ContainerRating>

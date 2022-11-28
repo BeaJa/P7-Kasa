@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import Style from 'styled-components';
+import styled from 'styled-components';
 import ArrowLeft from '../assets/ArrowLeft.svg'
 import ArrowRight from '../assets/ArrowRight.svg'
 import { device } from './device';
 
-const CarouselContainer = Style.div`
+const CarouselContainer = styled.div`
     position: relative;
     display: inline-block;
     width: 100%;
     justify-content: center;
     `
-const CarouselArrow = Style.div`
+const CarouselArrow = styled.div`
     display: flex;
     position: absolute;
     width: 100%;
@@ -22,7 +22,7 @@ const CarouselArrow = Style.div`
         height: 255px;
     }
     `
-const ImgArrowLeft = Style.img`
+const ImgArrowLeft = styled.img`
     top: 50%;
     font-size: 2rem;
     margin: 0 10px;
@@ -33,7 +33,7 @@ const ImgArrowLeft = Style.img`
         height: 40px;
     }
     `
-const ImgArrowRight = Style.img`
+const ImgArrowRight = styled.img`
     top: 50%;
     font-size: 2rem;
     margin: 0 10px;
@@ -44,11 +44,11 @@ const ImgArrowRight = Style.img`
         height: 40px;
     }
     `
-const CarouselItem = Style.div`
+const CarouselItem = styled.div`
     width: 100%;
     align-items: center;
     `
-const View = Style.img`
+const View = styled.img`
     display: inline-block;
     width: 100%;
     height: 450px;
@@ -60,26 +60,22 @@ const View = Style.img`
     }
     `
 
-function Carousel ({data}) {
-    
-    const picture = data.pictures;
+function Carousel ({pictures}) {
 
     const [current, setCurrent] = useState(0);
 
-    const length = picture.length;
-
-    const cover = data.cover;
+    const nbPictures = pictures.length;
 
     const nextPicture = () => {
-        setCurrent(current === length - 1 ? 0 : current + 1);
+        setCurrent(current === nbPictures - 1 ? 0 : current + 1);
     };
 
     const prevPicture = () => {
-        setCurrent(current === 0 ? length - 1 : current - 1);
+        setCurrent(current === 0 ? nbPictures - 1 : current - 1);
     };
 
-    if (!picture || length <=1 ) {
-        return <View src={cover} alt='Photo cover'></View>;
+    if ( nbPictures === 1 ) {
+        return <View src={pictures[0]} alt='Photo appartement'></View>
     }
 
     return (
@@ -88,18 +84,16 @@ function Carousel ({data}) {
                 <ImgArrowLeft src={ArrowLeft} onClick={prevPicture} />
                 <ImgArrowRight src={ArrowRight} onClick={nextPicture} />
             </CarouselArrow>
-                {picture.map((p, index) => {
+                {
+                pictures.map((picture, index) => {
                     return (
-                    <CarouselItem key={index}>
-                        {index === current && 
-                        <View src={p} alt='Decor1' />}
-                       
-                    </CarouselItem>
-                    );
+                        <CarouselItem key={index}>
+                            {index === current && 
+                            <View src={picture} alt='Photo appartement' />}
+                        </CarouselItem>
+                    )
                 })}
-          
         </CarouselContainer>
-    );
+    )
 };
-
 export default Carousel;

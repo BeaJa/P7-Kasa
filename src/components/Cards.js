@@ -1,9 +1,9 @@
 import React from 'react';
-import Style from "styled-components"
+import styled from "styled-components"
 import { Link } from 'react-router-dom';
 import { device } from './device';
 
-const Container = Style.div`
+const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
@@ -15,47 +15,70 @@ const Container = Style.div`
     @media ${device.mobileM} {
         background-color: transparent;
         gap: 20px;
-        padding: 0;
+        padding: 0 ;
     }
     `
-const CardImage = Style.div`
+const CardLink = styled(Link)`
+    &:hover {
+        text-decoration: none;
+    }
+    `
+const CardImage = styled.div`
     display: flex;
     height: 340px;
     width: 340px;
     border-radius: 10px;
     flex-direction: column;
-    background: linear-gradient(180deg, #FF6060 0%, rgba(0, 0, 0, 0.5) 100%);
-    justify-content: flex-end;
-    align-items: flex-start;
-
+    
     @media ${device.mobileM} {
         height: 255px;
+        margin: 0 20px;
     }
     `
-const CardLink = Style(Link)`
-    text-decoration: none
+const Cover = styled.img`
+    width: 340px;
+    height: 340px;
+    border-radius: 10px 10px 0 0;
+
+    @media ${device.mobileM} {
+        height: 195px;
+    }
     `
-const CardText = Style.p`
-    color: white;
-    margin: 20px;
+const CardText = styled.div`
+    display: flex;
+    align-items: center;
+    height: 90px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(180deg, #FF6060 0%, rgba(0, 0, 0, 0.5) 100%); 
+
+    @media ${device.mobileM} {
+        height: 60px;
+    }
+    `
+const Text = styled.p`
+    color: #FFFFFF;
+    margin: 0 20px;
 
     @media ${device.mobileM} {
         font-size: 18px;
     }
-    `
+`
 function Card({data}) {
       return (
-        <Container>
+        <CardContainer>
             {
-                data.map((card) => (
-            <CardLink key={card.id} to={`/fichelogement/${card.id}`} >
+            data.map((card) => (
+            <CardLink key={card.id} to={`/logement/${card.id}`} >
                 <CardImage>
-                    <CardText >{card.title}</CardText>
+                    <Cover src={card.cover}></Cover>
+                    <CardText>
+                        <Text>{card.title}</Text>
+                    </CardText>
                 </CardImage>        
             </CardLink>
             ))
             }
-        </Container>
+        </CardContainer>
         );
 };
 export default Card;

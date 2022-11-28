@@ -1,20 +1,24 @@
 import React from 'react';
-import Style from "styled-components"
+import styled from "styled-components"
 import LogoFooter from '../assets/LogoFooter.png'
-import Texte from "../assets/2020Kasa.png"
+import TexteFooter from "../assets/2020Kasa.png"
+import { device } from './device';
 
-const ContainerFooter = Style.div`
+const ContainerFooter = styled.div`
     padding: 20px 0 20px;
     height: 150px;
     background: #000000;
-    margin: 150px 0 0;
-    bottom: 0;
+    margin-top: 200px;
+
+    @media ${device.mobileM} {
+        margin-top: 140px;
+    }
     `
-const FooterBlockImage = Style.div`
+const FooterBlockImage = styled.div`
     text-align: center;
-    padding-top: 50px
+    padding-top: 50px;
     `
-const FooterBlockText = Style.div`
+const FooterBlockText = styled.div`
     text-align: center;
     padding-top: 5px;
     `
@@ -23,10 +27,9 @@ const Footer = () => {
         <ContainerFooter>
             <FooterBlockImage>
                 <img src={LogoFooter} alt="Logo Kasa" />
-               
             </FooterBlockImage>
             <FooterBlockText>
-                <img src={Texte} alt="Texte Kasa" />
+                <img src={TexteFooter} alt="Texte Kasa" />
             </FooterBlockText>
         </ContainerFooter>
     );

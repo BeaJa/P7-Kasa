@@ -1,21 +1,21 @@
 import React from 'react';
-import Style from "styled-components";
-import Photo1 from "../assets/foret.png"
-import Datas from '../assets/data/data.json'
+import styled from "styled-components";
+import PhotoCouverture from "../assets/foret.png"
+import DatasJson from '../assets/data/data.json'
 import Cards from '../components/Cards';
 import { device } from '../components/device';
 
 
-const ContainerHome = Style.div`
+const ContainerHome = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0 100px 20px;
 
     @media ${device.mobileM} {
-        margin: 0 20px 20px;
+        margin: 0 20px;
     }
     `
-const ContainerImageText = Style.div`
+const ContainerImageText = styled.div`
     display: flex;
     position: relative;
     align-items: center;
@@ -28,7 +28,7 @@ const ContainerImageText = Style.div`
         margin: 20px 0;
     }
     `
-const TextDiv = Style.div`
+const TextDiv = styled.div`
     position: absolute;
     z-index: 2;
     margin: 0 50px;
@@ -37,7 +37,7 @@ const TextDiv = Style.div`
         margin: 0 25px;
     }
     `
-const Text = Style.p`
+const Text = styled.p`
     color: white;
     font-weight: 500;
     font-size: 50px;
@@ -49,7 +49,7 @@ const Text = Style.p`
         padding: 0 15px;
       }
     `
-const ImageDiv = Style.div`
+const ImageDiv = styled.div`
     width: 100%;
     height: 223px;
 
@@ -57,7 +57,7 @@ const ImageDiv = Style.div`
         height: 111px;
     }
     `
-const Image = Style.img`
+const Image = styled.img`
     width: 100%;
     height: 223px;
     overflow: hidden;
@@ -69,8 +69,6 @@ const Image = Style.img`
         height: 111px;
     }
     `
-const ContainerCards = Style.div`
-    `
     
 const Home = () => {
 
@@ -78,15 +76,15 @@ const Home = () => {
         <ContainerHome>
             <ContainerImageText>
                 <ImageDiv>
-                    <Image src={Photo1} alt="Foret"/>
+                    <Image src={PhotoCouverture} alt="Foret"/>
                 </ImageDiv>
                 <TextDiv>
                     <Text>Chez vous, partout et ailleurs</Text>
                 </TextDiv>
             </ContainerImageText>
-            <ContainerCards>
-                <Cards data={Datas}></Cards>
-            </ContainerCards>
+          
+            <Cards data={DatasJson}></Cards>
+          
         </ContainerHome>
     )
 };

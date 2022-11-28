@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import Style from "styled-components";
+import styled from "styled-components";
 import Down from '../assets/ArrowDown.svg'
 import { device } from './device';
 
-const ContainerButton = Style.div`
+const ContainerButton = styled.div`
     width: 100%;
     margin-bottom: 20px;
 
@@ -12,18 +12,16 @@ const ContainerButton = Style.div`
         margin-bottom: 10px;
     }
     `
-const ButtonCollaspe = Style.div`
+const ButtonCollaspe = styled.div`
     display: flex;
-    position: relative;
     top: 10px;
 
     @media ${device.mobileM} {
         width: 100%;
     }
     `
-const Button = Style.button`
+const Button = styled.button`
     display: flex;
-    position: relative;
     width: 100%;
     height: 47px;
     border-radius: 10px;
@@ -40,7 +38,7 @@ const Button = Style.button`
         font-size: 15px;
     }
     `
-const Icon = Style.img.attrs(() => ({}))` ${(props) => props.active && 
+const Icon = styled.img.attrs(() => ({}))` ${(props) => props.active && 
     `
     transform: rotate(180deg)`};
 
@@ -49,7 +47,7 @@ const Icon = Style.img.attrs(() => ({}))` ${(props) => props.active &&
         height: 20px;
     }
     `
-const ToggleBackground = Style.div`
+const ToggleBackground = styled.div`
     height: auto;
     background-color: #F6F6F6;
     border-radius: 0 0 10px 10px;
@@ -60,6 +58,7 @@ const ToggleBackground = Style.div`
     }
     `
 const Collapse = (props) => {
+    
     const [setActive, setActiveOpen] = useState(false);
   
     const Toggle = () => {

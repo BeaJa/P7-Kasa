@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import Style from "styled-components"
+import { NavLink } from "react-router-dom"
+import styled from "styled-components"
 import { createGlobalStyle } from "styled-components"
 import { device } from "../components/device"
 
@@ -20,18 +20,25 @@ export const GlobalStyle = createGlobalStyle`
   li {
     list-style-type: none;
   }
- `
-export const StyleLink = Style(Link)`
-    display: flex;
+
+  a {
     text-decoration: none;
-    width: 100px;
-    padding: 20px 10px;
-    justify-content: flex-end;
     &:hover {
       text-decoration: underline;
     }
+    font-size: 34px;
+
     @media ${device.mobileM} {
       font-size: 12px;
+    }
+  }
+ `
+export const StyledLink = styled(NavLink)`
+    &:active {
+    text-decoration: underline;
+  }
+  
+    @media ${device.mobileM} {
       padding: 20px 5px;
       text-transform: uppercase;
     }

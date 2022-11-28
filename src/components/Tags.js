@@ -1,11 +1,11 @@
 import React from 'react';
-import Style from 'styled-components'
+import styled from 'styled-components'
 import { device } from './device';
 
-const ContainerTags = Style.div`
+const ContainerTags = styled.div`
     display: flex;
     `
-const Tag = Style.div`
+const Tag = styled.div`
     height: 35px;
     width: auto;
     border-radius: 10px;
@@ -27,15 +27,15 @@ const Tag = Style.div`
     `
 const Tags = ({data}) => {
 
-    const listTags = data.tags
+    const listTags = data.tags;
 
     return (
         <ContainerTags>
-              {
-                            listTags.map((t, index) => (
-                        <Tag key={index}>{t}</Tag>
-                            ))
-                        }
+            {
+            listTags.map((tag, index) => (
+            <Tag key={index}>{tag}</Tag>
+                ))
+            }
         </ContainerTags>
     );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import Style from "styled-components"
-import Logo from '../assets/logo.png'
-import { StyleLink } from '../styles/style';
+import styled from "styled-components"
+import LogoHeader from '../assets/LogoHeader.png'
+import { StyledLink } from '../styles/style';
 import { device } from './device';
 
-const ContainerHeader = Style.div`
+const ContainerHeader = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0 100px;
@@ -14,10 +14,10 @@ const ContainerHeader = Style.div`
         margin: 0 20px;
     }
     `
-const HeaderLogo = Style.div`
+const HeaderLogo = styled.div`
     padding: 20px 0;
     `
-const HeaderImage = Style.img`
+const HeaderImage = styled.img`
     width: 210px;
     height: 68px;
 
@@ -26,9 +26,8 @@ const HeaderImage = Style.img`
         height: 47px;
     }
     `
-const ContainerNav = Style.nav`
+const HeaderNavigation = styled.div`
     display: flex;
-    text-decaration: none;
     height: 88px;
     align-items: center;
     margin-top: 10px;
@@ -38,16 +37,27 @@ const ContainerNav = Style.nav`
         height: 70px;
     }
     `
+const LinkDiv = styled.div`
+    margin: 0 10px;
+
+    @media ${device.mobileM} {
+        margin: 0 2px;
+    }
+`
 const Header = () => {
     return (
         <ContainerHeader>
             <HeaderLogo>
-                <HeaderImage src={Logo} alt="Logo Kasa"></HeaderImage>
+                <HeaderImage src={LogoHeader} alt="Logo Kasa"></HeaderImage>
             </HeaderLogo>
-            <ContainerNav>
-                <StyleLink to="/">Accueil</StyleLink>
-                <StyleLink to="/apropos">A Propos</StyleLink>
-            </ContainerNav>
+            <HeaderNavigation>
+                <LinkDiv>
+                    <StyledLink to="/home" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>Accueil</StyledLink>
+                </LinkDiv>
+                <LinkDiv>
+                    <StyledLink to="/apropos" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>A Propos</StyledLink>
+                </LinkDiv>
+            </HeaderNavigation>
         </ContainerHeader>
     );
 };
