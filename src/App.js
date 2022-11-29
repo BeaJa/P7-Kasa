@@ -14,7 +14,7 @@ const App = () => {
         <GlobalStyle />
           <Header />
             <Routes>
-              <Route path='/home' element={<Home/>} />
+              <Route path='/' element={<Home/>} />
               <Route path='/apropos' element={<Apropos />} />
               <Route path='/logement/:id' element={<Logement />} />
               <Route path='*' element={<Error404 />} />

@@ -52,7 +52,7 @@ const Header = () => {
             </HeaderLogo>
             <HeaderNavigation>
                 <LinkDiv>
-                    <StyledLink to="/home" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>Accueil</StyledLink>
+                    <StyledLink to="/" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>Accueil</StyledLink>
                 </LinkDiv>
                 <LinkDiv>
                     <StyledLink to="/apropos" style={({isActive}) => ({textDecoration: isActive ? 'underline' : 'none'})}>A Propos</StyledLink>
